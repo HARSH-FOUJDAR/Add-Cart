@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import CartModal from "./CartModal";
-
+import Cartitem from "./CartModal";
 const Header = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [totalQuantity, setTotalQuantity] = useState(0);
