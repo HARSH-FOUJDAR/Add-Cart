@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { MdHome } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
 import { useSelector } from "react-redux";
+
 const Header = () => {
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const [totalQuantity, setTotalQuantity] = useState(0);
   const carts = useSelector((store) => store.cart.items);
 
@@ -14,28 +15,23 @@ const Header = () => {
   }, [carts]);
 
   return (
-    <>
-      <header className="flex justify-between items-center mb-5 px-4 py-3 shadow-md bg-white sticky top-0 z-20">
-        <Link to="/" className="text-2xl font-bold text-blue-600">
-          FlipClone 🛍️
-        </Link>
+    <header className="flex justify-between items-center mb-5 px-4 py-3 shadow-md bg-white sticky top-0 z-20">
+      <Link to="/" className="text-5xl font-bold text-blue-600">
+        <MdHome />
+      </Link>
 
-        <div
-          onClick={() => setIsCartOpen(true)}
-          className="relative w-10 h-10 bg-gray-100 rounded-full flex justify-center items-center hover:bg-gray-200 cursor-pointer"
-        >
-          <FaCartPlus className="text-xl" />
-          {totalQuantity > 0 && (
-            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex justify-center items-center">
-              {totalQuantity}
-            </span>
-          )}
-        </div>
-      </header>
-
-      {/* Cart Drawer */}
-      {isCartOpen && <CartModal onClose={() => setIsCartOpen(false)} />}
-    </>
+      <Link
+        to="/cart"
+        className="relative w-10 h-10 bg-gray-100 rounded-full flex justify-center items-center hover:bg-gray-200 cursor-pointer"
+      >
+        <FaCartPlus className="text-xl" />
+        {totalQuantity > 0 && (
+          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex justify-center items-center">
+            {totalQuantity}
+          </span>
+        )}
+      </Link>
+    </header>
   );
 };
 
