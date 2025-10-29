@@ -26,7 +26,6 @@ const Cartitem = ({ data }) => {
 
 }
 
-
   return (
     <div className="flex justify-between items-center bg-slate-600 text-white p-3 border-b border-slate-700 rounded-md shadow-sm">
       <div className="flex items-center gap-3">
